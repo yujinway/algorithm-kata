@@ -16,6 +16,5 @@ vector<int> solution(vector<int> arr) {
         }
     }
     
-    
     return answer.size() == 0 ? vector<int>{-1} : answer;
 }
