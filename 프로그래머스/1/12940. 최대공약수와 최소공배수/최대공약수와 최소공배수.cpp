@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 int getGCD(int a, int b)
 {
 	int r = a % b;
@@ -20,8 +19,7 @@ int getGCD(int a, int b)
 vector<int> solution(int n, int m) {
     vector<int> answer;
     
-    int GCD;
-    int LCM;
+    int GCD = 1;
     
     if(n >= m)
     {
@@ -32,7 +30,7 @@ vector<int> solution(int n, int m) {
         GCD = getGCD(m, n);
     }
     
-    LCM = n * m / GCD;
+    int LCM = n * m / GCD;
     
     answer.push_back(GCD);
     answer.push_back(LCM);
