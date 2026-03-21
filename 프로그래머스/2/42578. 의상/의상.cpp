@@ -8,7 +8,7 @@ int solution(vector<vector<string>> clothes) {
     int answer = 1;
     unordered_map<string, int> clothes_map;
     
-    for(const auto cloth : clothes)
+    for(const auto& cloth : clothes)
     {
         clothes_map[cloth[1]]++;
     }
