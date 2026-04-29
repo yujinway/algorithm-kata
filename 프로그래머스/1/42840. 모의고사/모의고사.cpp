@@ -5,44 +5,38 @@
 using namespace std;
 
 vector<int> solution(vector<int> answers) {
+    vector<int> pattern_1 = {1, 2, 3, 4, 5}; // size = 5
+    vector<int> pattern_2 = {2, 1, 2, 3, 2, 4, 2, 5}; // size = 8
+    vector<int> pattern_3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5}; // size = 10
+    
+    vector<int> scores = {0, 0, 0};
     vector<int> answer;
-    vector<int> pattern1 = {1, 2, 3, 4, 5};
-    vector<int> pattern2 = {2, 1, 2, 3, 2, 4, 2, 5};
-    vector<int> pattern3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
     
-    int score1 = 0;
-    int score2 = 0;
-    int score3 = 0;
     
-    for (int i = 0; i < answers.size(); i++)
+    for(int i = 0; i < answers.size(); i++)
     {
-        if(answers[i] == pattern1[i % pattern1.size()])
+        if(pattern_1[(i + 5) % 5] == answers[i])
         {
-            score1++;
+            scores[0]++;
         }
-        if(answers[i] == pattern2[i % pattern2.size()])
+        if(pattern_2[(i + 8) % 8] == answers[i])
         {
-            score2++;
+            scores[1]++;
         }
-        if(answers[i] == pattern3[i % pattern3.size()])
+        if(pattern_3[(i + 10) % 10] == answers[i])
         {
-            score3++;
+            scores[2]++;
         }
     }
+
+    int maxScore = *max_element(scores.begin(), scores.end());
     
-    int maxScore = max({score1, score2, score3});
-    
-    if(score1 == maxScore)
+    for(int i = 0; i < 3; i++)
     {
-        answer.push_back(1);
-    }
-    if(score2 == maxScore)
-    {
-        answer.push_back(2);
-    }
-    if(score3 == maxScore)
-    {
-        answer.push_back(3);
+        if(scores[i] == maxScore)
+        {
+            answer.push_back(i + 1);
+        }
     }
     
     return answer;
