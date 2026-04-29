@@ -7,14 +7,14 @@ using namespace std;
 int solution(vector<vector<int>> sizes) {
     int maxWidth = 0;
     int maxHeight = 0;
-    
-    for (auto card: sizes)
+
+    for (vector<int> size : sizes)
     {
-        int minSide = min(card[0], card[1]);
-        int maxSide = max(card[0], card[1]);
+        int maxSide = max(size[0], size[1]);
+        int minSide = min(size[0], size[1]);
         
-        maxWidth = max(maxWidth, minSide);
-        maxHeight = max(maxHeight, maxSide);
+        maxWidth = max(maxWidth, maxSide);
+        maxHeight = max(maxHeight, minSide);
     }
     
     return maxWidth * maxHeight;
